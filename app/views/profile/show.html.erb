@@ -1,0 +1,21 @@
+<h2>Usuario: <%= current_user.email %></h2>
+
+<h3>Libros reservados</h3>
+
+<table>
+    <thead>
+        <th>Title</th>
+        <th>Review</th>
+        <th colspan="2"></th>
+    </thead>
+    <tbody>
+        <% @books.each do |book| %>
+            <tr id="book_<%= book.id%>">
+                <td><%= book.title %></td>
+                <td><%= book.review %></td>
+                <td><%= link_to 'Show', book %></td>
+                <td><%= link_to 'Eliminar reserva', set_book_reserve_path(book), method: :patch, remote: true %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
